@@ -14,5 +14,7 @@ public class Projectile : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Only server/ host can determine if dead
+        if( !isHost) return;
     }
 }
