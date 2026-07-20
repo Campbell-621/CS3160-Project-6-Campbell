@@ -66,12 +66,12 @@ public class CubeController : NetworkBehaviour
     [ServerRpc]    // <--- Attribute
     private void RequestThrowServerRpc(int playerIndex)
     {
-        // Instantiate Projectile
+        // Instantiate Projectile in front of player position
         // Get projectiles Network Object
         // Spawn network object for everyone
         // Set player Index to who "Threw" 
         
-        var instantiatedProjectile = Instantiate(projectile);
+        var instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward, transform.rotation);
         var networkObject = instantiatedProjectile.GetComponent<NetworkObject>();
         networkObject.Spawn();
 
